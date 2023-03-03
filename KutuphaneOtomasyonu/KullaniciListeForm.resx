@@ -117,30 +117,4 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
-  <data name="pictureBox1.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        iVBORw0KGgoAAAANSUhEUgAAADIAAAAyCAYAAAAeP4ixAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAL
-        EAAACxABrSO9dQAAA9lJREFUaEPt2WuoZlMcx/GHInfKdZSUywuXMt5oGokaFCWhlCgllxFSI+WNxlAu
-        8UKMF5OJ8EKReIPkMq5FuYVhSBO55Jbkfuf7nc6qNaffs/ez93nmOGr/6vPmWetZa5+z9/nvtdYZDRky
-        ZMhcsg1Ow514Fd/gNxyI/0W2wvn4DP8Ed2A7LOh4gQ8h/QC1v/E6zsKCi3fiYaQLb7IKCypnI11om79w
-        AuY1W2MZ1uINfIod4efvIl3oJJ6F2QkWho/xE5Zg6jkcr6C+gCdhjkL9eVf+zewHswHl8+dxEfbBVOKF
-        /oh6cq2GuRCz27o6BeYBzG77DmdgTtkNX2L24Loa5jqk9i4ug7kNqf1nHILesaqkgXUDzJVI7V2UH+RW
-        pHatQe+8jTSo7oI5B6m9izNh7kFq1yfoFZcZfyINKiuV2QtN/dpYgveHeROpjywK26NzfMn55TSovoV9
-        zDtIfSbxMoxjpaJSs9z3ykdIA+p+GF9oqb0LK6N5CqldLjx7xxKbBlUpv5citXdxOsyDSO26G73jbU+D
-        yrWVOR6pvYsDYFxMpnatQ+98jzSofL9sO+O9mc/6KCuEvfEHUh99jt55DmnQ4gIYK9drSH2aPA1fuuZ6
-        pD7Fo+gdF27W7zSwvGNLYfq84S+BOQm/I/WRRWcx5pRrkQYvnoA5Eql9HN89ZbHYdjevwZxzBNLghc+1
-        j5Z5BqlP4m7SHIzUXvMaphKfzzRB4V0zLuys96lP7SuUg4hxC8XiEUwt7gnSJIUboUNhbkbqU7sFxufe
-        05XUp1iEqcWlQZqktgLmdqT2mnfBXIHUXpvaxsr4W0mT1C6G8SwrtdfsY/xOaq9ZRKYSV5z3Ik1SuLi0
-        hJr7kPrU7GP8TtPCVBaQ8q7pFc+pzsNGpAmK93EqjD90W3/ZpxzUeSL5AVK/4gtcjt0xcVwquDMct8WV
-        e4jH4G/UUxRjCX4cqX9iJdwTxjFOhmM6duqvX+G+/kSMjb/NlfgBaRB5EGDFOQglO8Bn/Wuk7zSxDC9H
-        vWFybOdwrvSdwlOdo7FZvAtNK12XD1ajPVDie+BGTPLeaOMYN6E+5HYu52xaurg68HBwUyyt65E6yn17
-        eUeYY+Ej1PQI9OUfvmM7R8lhaLq+X+DqYHTVzAeJh2SeABo7t62Gp8kTyPII74wXkfrJU/5Nx5+p8UPs
-        AnMu2vbTW4JzOrfZFeMqoieUYy/wGBiPe9pq/Zbk3F6DOQ6pj0uk0QvVB4WPkNkXTVVsvrjv8VqMj/vs
-        9pfQmLZd23zyWnrnLaRB/wtWz96Z5F9p88WqNWTIkCFDFlJGo38B0q5Pja33I2IAAAAASUVORK5CYII=
-</value>
-  </data>
-  <metadata name="$this.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
 </root>
