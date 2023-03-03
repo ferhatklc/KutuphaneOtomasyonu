@@ -17,7 +17,7 @@ namespace KutuphaneOtomasyonu
             InitializeComponent();
         }
         public void Listele() {
-
+             
             KutuphaneOtomasyonuEntities db = new KutuphaneOtomasyonuEntities();
             var kullanicilar = db.Kullanicilar.ToList();
             dataGridView1.DataSource = kullanicilar.ToList();
@@ -25,6 +25,11 @@ namespace KutuphaneOtomasyonu
         private void KullaniciListeForm_Load(object sender, EventArgs e)
         {
             Listele(); 
+        }
+
+        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
         }
     }
 }

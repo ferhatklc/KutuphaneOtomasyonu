@@ -1,4 +1,5 @@
-﻿using System;
+﻿using KutuphaneOtomasyonu.Kullanici;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -46,6 +47,27 @@ namespace KutuphaneOtomasyonu
             kListeForm.MdiParent = this;
             kListeForm.Show();
            
+        }
+
+        private void ekleKullanicibtn_Click(object sender, EventArgs e)
+        {
+            KullaniciEkleForm ekleForm = new KullaniciEkleForm();  
+            ekleForm.MdiParent = this;  
+            ekleForm.Show();    
+        }
+
+        private void silKullanicibtn_Click(object sender, EventArgs e)
+        {
+            KullaniciSilForm kSil= new KullaniciSilForm();  
+            kSil.MdiParent = this;
+            kSil.Show();
+        }
+
+        private void güncelleKullanicibtn_Click(object sender, EventArgs e)
+        {
+            KullaniciGuncelleForm kGuncel = new KullaniciGuncelleForm();
+            kGuncel.MdiParent = this;   
+            kGuncel.Show();
         }
     }
 }

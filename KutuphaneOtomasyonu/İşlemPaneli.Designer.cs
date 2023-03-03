@@ -30,11 +30,11 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(İşlemPaneli));
             this.panel1 = new System.Windows.Forms.Panel();
-            this.kullaniciBilgiPanel = new System.Windows.Forms.Panel();
-            this.button1 = new System.Windows.Forms.Button();
-            this.ekleKullanicibtn = new System.Windows.Forms.Button();
-            this.güncelleKullanicibtn = new System.Windows.Forms.Button();
             this.silKullanicibtn = new System.Windows.Forms.Button();
+            this.güncelleKullanicibtn = new System.Windows.Forms.Button();
+            this.ekleKullanicibtn = new System.Windows.Forms.Button();
+            this.button1 = new System.Windows.Forms.Button();
+            this.kullaniciBilgiPanel = new System.Windows.Forms.Panel();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -51,15 +51,50 @@
             this.panel1.Size = new System.Drawing.Size(246, 590);
             this.panel1.TabIndex = 0;
             // 
-            // kullaniciBilgiPanel
+            // silKullanicibtn
             // 
-            this.kullaniciBilgiPanel.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.kullaniciBilgiPanel.Dock = System.Windows.Forms.DockStyle.Top;
-            this.kullaniciBilgiPanel.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.kullaniciBilgiPanel.Location = new System.Drawing.Point(246, 0);
-            this.kullaniciBilgiPanel.Name = "kullaniciBilgiPanel";
-            this.kullaniciBilgiPanel.Size = new System.Drawing.Size(810, 72);
-            this.kullaniciBilgiPanel.TabIndex = 1;
+            this.silKullanicibtn.BackColor = System.Drawing.Color.Fuchsia;
+            this.silKullanicibtn.Dock = System.Windows.Forms.DockStyle.Top;
+            this.silKullanicibtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.silKullanicibtn.Image = ((System.Drawing.Image)(resources.GetObject("silKullanicibtn.Image")));
+            this.silKullanicibtn.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.silKullanicibtn.Location = new System.Drawing.Point(0, 216);
+            this.silKullanicibtn.Name = "silKullanicibtn";
+            this.silKullanicibtn.Size = new System.Drawing.Size(246, 72);
+            this.silKullanicibtn.TabIndex = 3;
+            this.silKullanicibtn.Text = "Sil";
+            this.silKullanicibtn.UseVisualStyleBackColor = false;
+            this.silKullanicibtn.Click += new System.EventHandler(this.silKullanicibtn_Click);
+            // 
+            // güncelleKullanicibtn
+            // 
+            this.güncelleKullanicibtn.BackColor = System.Drawing.Color.Fuchsia;
+            this.güncelleKullanicibtn.Dock = System.Windows.Forms.DockStyle.Top;
+            this.güncelleKullanicibtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.güncelleKullanicibtn.Image = ((System.Drawing.Image)(resources.GetObject("güncelleKullanicibtn.Image")));
+            this.güncelleKullanicibtn.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.güncelleKullanicibtn.Location = new System.Drawing.Point(0, 144);
+            this.güncelleKullanicibtn.Name = "güncelleKullanicibtn";
+            this.güncelleKullanicibtn.Size = new System.Drawing.Size(246, 72);
+            this.güncelleKullanicibtn.TabIndex = 2;
+            this.güncelleKullanicibtn.Text = "Güncelle";
+            this.güncelleKullanicibtn.UseVisualStyleBackColor = false;
+            this.güncelleKullanicibtn.Click += new System.EventHandler(this.güncelleKullanicibtn_Click);
+            // 
+            // ekleKullanicibtn
+            // 
+            this.ekleKullanicibtn.BackColor = System.Drawing.Color.Fuchsia;
+            this.ekleKullanicibtn.Dock = System.Windows.Forms.DockStyle.Top;
+            this.ekleKullanicibtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.ekleKullanicibtn.Image = ((System.Drawing.Image)(resources.GetObject("ekleKullanicibtn.Image")));
+            this.ekleKullanicibtn.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.ekleKullanicibtn.Location = new System.Drawing.Point(0, 72);
+            this.ekleKullanicibtn.Name = "ekleKullanicibtn";
+            this.ekleKullanicibtn.Size = new System.Drawing.Size(246, 72);
+            this.ekleKullanicibtn.TabIndex = 1;
+            this.ekleKullanicibtn.Text = "Ekle";
+            this.ekleKullanicibtn.UseVisualStyleBackColor = false;
+            this.ekleKullanicibtn.Click += new System.EventHandler(this.ekleKullanicibtn_Click);
             // 
             // button1
             // 
@@ -76,47 +111,15 @@
             this.button1.UseVisualStyleBackColor = false;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
-            // ekleKullanicibtn
+            // kullaniciBilgiPanel
             // 
-            this.ekleKullanicibtn.BackColor = System.Drawing.Color.Fuchsia;
-            this.ekleKullanicibtn.Dock = System.Windows.Forms.DockStyle.Top;
-            this.ekleKullanicibtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.ekleKullanicibtn.Image = ((System.Drawing.Image)(resources.GetObject("ekleKullanicibtn.Image")));
-            this.ekleKullanicibtn.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.ekleKullanicibtn.Location = new System.Drawing.Point(0, 72);
-            this.ekleKullanicibtn.Name = "ekleKullanicibtn";
-            this.ekleKullanicibtn.Size = new System.Drawing.Size(246, 72);
-            this.ekleKullanicibtn.TabIndex = 1;
-            this.ekleKullanicibtn.Text = "Ekle";
-            this.ekleKullanicibtn.UseVisualStyleBackColor = false;
-            // 
-            // güncelleKullanicibtn
-            // 
-            this.güncelleKullanicibtn.BackColor = System.Drawing.Color.Fuchsia;
-            this.güncelleKullanicibtn.Dock = System.Windows.Forms.DockStyle.Top;
-            this.güncelleKullanicibtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.güncelleKullanicibtn.Image = ((System.Drawing.Image)(resources.GetObject("güncelleKullanicibtn.Image")));
-            this.güncelleKullanicibtn.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.güncelleKullanicibtn.Location = new System.Drawing.Point(0, 144);
-            this.güncelleKullanicibtn.Name = "güncelleKullanicibtn";
-            this.güncelleKullanicibtn.Size = new System.Drawing.Size(246, 72);
-            this.güncelleKullanicibtn.TabIndex = 2;
-            this.güncelleKullanicibtn.Text = "Güncelle";
-            this.güncelleKullanicibtn.UseVisualStyleBackColor = false;
-            // 
-            // silKullanicibtn
-            // 
-            this.silKullanicibtn.BackColor = System.Drawing.Color.Fuchsia;
-            this.silKullanicibtn.Dock = System.Windows.Forms.DockStyle.Top;
-            this.silKullanicibtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.silKullanicibtn.Image = ((System.Drawing.Image)(resources.GetObject("silKullanicibtn.Image")));
-            this.silKullanicibtn.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.silKullanicibtn.Location = new System.Drawing.Point(0, 216);
-            this.silKullanicibtn.Name = "silKullanicibtn";
-            this.silKullanicibtn.Size = new System.Drawing.Size(246, 72);
-            this.silKullanicibtn.TabIndex = 3;
-            this.silKullanicibtn.Text = "Sil";
-            this.silKullanicibtn.UseVisualStyleBackColor = false;
+            this.kullaniciBilgiPanel.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.kullaniciBilgiPanel.Dock = System.Windows.Forms.DockStyle.Top;
+            this.kullaniciBilgiPanel.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.kullaniciBilgiPanel.Location = new System.Drawing.Point(246, 0);
+            this.kullaniciBilgiPanel.Name = "kullaniciBilgiPanel";
+            this.kullaniciBilgiPanel.Size = new System.Drawing.Size(810, 72);
+            this.kullaniciBilgiPanel.TabIndex = 1;
             // 
             // İşlemPaneli
             // 

@@ -5,8 +5,8 @@
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
       <Diagram DiagramId="5cdf432fbffc4b69baae4c78578be190" Name="Diagram1">
-        <EntityTypeShape EntityType="KutuphaneOtomasyonuModel.Personeller" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="KutuphaneOtomasyonuModel.Kullanicilar" Width="1.5" PointX="3.375" PointY="0.75" />
+        <EntityTypeShape EntityType="KutuphaneOtomasyonuModel.Personeller" Width="1.5" PointX="0.875" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="KutuphaneOtomasyonuModel.Kullanicilar" Width="1.5" PointX="3.375" PointY="0.75" IsExpanded="true" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
