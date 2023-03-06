@@ -10,16 +10,16 @@ using System.Windows.Forms;
 
 namespace KutuphaneOtomasyonu.Kaynak
 {
-    public partial class KaynakSilForm : Form
+    public partial class KaynakGuncelleForm : Form
     {
-        public KaynakSilForm()
+        public KaynakGuncelleForm()
         {
             InitializeComponent();
         }
         KutuphaneOtomasyonuEntities db=new KutuphaneOtomasyonuEntities();
-        private void KaynakSilForm_Load(object sender, EventArgs e)
+        private void KaynakGuncelleForm_Load(object sender, EventArgs e)
         {
-            var kaynaklar= db.Kaynaklar;
+            var kaynaklar= db.Kaynaklar.ToList();
             dataGridView1.DataSource = kaynaklar.ToList();
 
             //0. ve 4. kolonları görünmez yaptık 
@@ -33,16 +33,24 @@ namespace KutuphaneOtomasyonu.Kaynak
 
         }
 
+        private void dataGridView1_CellMouseClick(object sender, DataGridViewCellMouseEventArgs e)
+        {
+            adKaynaktxt.Text= dataGridView1.CurrentRow.Cells[1].Value.ToString();
+            yazarKaynaktxt.Text = dataGridView1.CurrentRow.Cells[2].Value.ToString() ;
+            comboBox1.Text = dataGridView1.CurrentRow.Cells[3].Value.ToString();    
+        }
+
         private void button1_Click(object sender, EventArgs e)
         {
-            int secilenId = Convert.ToInt16( dataGridView1.CurrentRow.Cells[0].Value);
-            var silinenKaynak=db.Kaynaklar.Where(x=>x.kaynak_id==secilenId).FirstOrDefault();
-            db.Kaynaklar.Remove(silinenKaynak);
+            int  seçilenKaynak = Convert.ToInt32(dataGridView1.CurrentRow.Cells[0].Value);
+            var guncellenecekKaynak  = db.Kaynaklar.Where(x=>x.kaynak_id==seçilenKaynak).FirstOrDefault();
+            guncellenecekKaynak.kaynak_ad = adKaynaktxt.Text;
+            guncellenecekKaynak.kaynak_yazar = yazarKaynaktxt.Text;
+            guncellenecekKaynak.kaynak_sayfasayisi= Convert.ToInt16( comboBox1.Text);
             db.SaveChanges();
 
-            var kaynaklar = db.Kaynaklar;
+            var kaynaklar = db.Kaynaklar.ToList();
             dataGridView1.DataSource = kaynaklar.ToList();
-
         }
     }
 }

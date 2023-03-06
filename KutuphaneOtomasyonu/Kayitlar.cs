@@ -12,11 +12,16 @@ namespace KutuphaneOtomasyonu
     using System;
     using System.Collections.Generic;
     
-    public partial class Kullanicilar
+    public partial class Kayitlar
     {
-        public int kullanici_id { get; set; }
-        public string kullanici_ad { get; set; }
-        public string kullanici_soyad { get; set; }
-        public Nullable<int> kullanici_sinif { get; set; }
+        public int kayit_id { get; set; }
+        public Nullable<int> ogrenci_id { get; set; }
+        public Nullable<int> kitap_id { get; set; }
+        public Nullable<System.DateTime> aliş_tarih { get; set; }
+        public Nullable<System.DateTime> son_tarih { get; set; }
+        public Nullable<bool> durum { get; set; }
+    
+        public virtual Kaynaklar Kaynaklar { get; set; }
+        public virtual Ogrenciler Ogrenciler { get; set; }
     }
 }

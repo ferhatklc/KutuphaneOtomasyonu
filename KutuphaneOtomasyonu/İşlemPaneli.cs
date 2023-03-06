@@ -1,4 +1,5 @@
-﻿using KutuphaneOtomasyonu.Kaynak;
+﻿using KutuphaneOtomasyonu.Kayit;
+using KutuphaneOtomasyonu.Kaynak;
 using KutuphaneOtomasyonu.Kullanici;
 using System;
 using System.Collections.Generic;
@@ -27,6 +28,7 @@ namespace KutuphaneOtomasyonu
             güncelleKullanicibtn.Visible= false;
             silKullanicibtn.Visible = false;
 
+
             //kaynaklar butonu
             ekleKaynakbtn.Visible = false;
             guncelleKaynakbtn.Visible = false;
@@ -51,7 +53,7 @@ namespace KutuphaneOtomasyonu
 
             }
 
-            KullaniciListeForm kListeForm = new KullaniciListeForm();
+            OgrenciListeForm kListeForm = new OgrenciListeForm();
             kListeForm.MdiParent = this;
             kListeForm.Show();
            
@@ -59,21 +61,21 @@ namespace KutuphaneOtomasyonu
 
         private void ekleKullanicibtn_Click(object sender, EventArgs e)
         {
-            KullaniciEkleForm ekleForm = new KullaniciEkleForm();  
+            OgrenciEkleForm ekleForm = new OgrenciEkleForm();  
             ekleForm.MdiParent = this;  
             ekleForm.Show();    
         }
 
         private void silKullanicibtn_Click(object sender, EventArgs e)
         {
-            KullaniciSilForm kSil= new KullaniciSilForm();  
+            OgrenciSilForm kSil= new OgrenciSilForm();  
             kSil.MdiParent = this;
             kSil.Show();
         }
 
         private void güncelleKullanicibtn_Click(object sender, EventArgs e)
         {
-            KullaniciGuncelleForm kGuncel = new KullaniciGuncelleForm();
+            OgrenciGuncelleForm kGuncel = new OgrenciGuncelleForm();
             kGuncel.MdiParent = this;   
             kGuncel.Show();
         }
@@ -111,6 +113,30 @@ namespace KutuphaneOtomasyonu
             KaynakSilForm kaynakSil =new KaynakSilForm();
             kaynakSil.MdiParent = this;
             kaynakSil.Show();   
+        }
+
+        private void guncelleKaynakbtn_Click(object sender, EventArgs e)
+        {
+            KaynakGuncelleForm kGuncel= new KaynakGuncelleForm();
+            kGuncel.MdiParent=this;
+            kGuncel.Show();
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            OduncVerForm odunc= new OduncVerForm();
+            odunc.MdiParent= this;
+            odunc.Show();
+
+
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            GeriAlform geri =new GeriAlform();
+            geri.MdiParent = this;
+            geri.Show();
+
         }
     }
 }

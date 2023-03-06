@@ -5,6 +5,17 @@
     <!-- SSDL content -->
     <edmx:StorageModels>
     <Schema Namespace="KutuphaneOtomasyonuModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Kayitlar">
+          <Key>
+            <PropertyRef Name="kayit_id" />
+          </Key>
+          <Property Name="kayit_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ogrenci_id" Type="int" />
+          <Property Name="kitap_id" Type="int" />
+          <Property Name="aliş_tarih" Type="datetime" />
+          <Property Name="son_tarih" Type="datetime" />
+          <Property Name="durum" Type="bit" />
+        </EntityType>
         <EntityType Name="Kaynaklar">
           <Key>
             <PropertyRef Name="kaynak_id" />
@@ -14,14 +25,15 @@
           <Property Name="kaynak_yazar" Type="nvarchar" MaxLength="50" />
           <Property Name="kaynak_sayfasayisi" Type="int" />
         </EntityType>
-        <EntityType Name="Kullanicilar">
+        <EntityType Name="Ogrenciler">
           <Key>
-            <PropertyRef Name="kullanici_id" />
+            <PropertyRef Name="ogrenci_id" />
           </Key>
-          <Property Name="kullanici_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="kullanici_ad" Type="nvarchar" MaxLength="25" />
-          <Property Name="kullanici_soyad" Type="nvarchar" MaxLength="25" />
-          <Property Name="kullanici_sinif" Type="int" />
+          <Property Name="ogrenci_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ogrenci_ad" Type="nvarchar" MaxLength="25" />
+          <Property Name="ogrenci_soyad" Type="nvarchar" MaxLength="25" />
+          <Property Name="ogrenci_tc" Type="nvarchar" MaxLength="11" />
+          <Property Name="ogrenci_sinif" Type="int" />
         </EntityType>
         <EntityType Name="Personeller">
           <Key>
@@ -33,15 +45,84 @@
           <Property Name="personel_kullaniciAd" Type="nvarchar" MaxLength="50" />
           <Property Name="personel_sifre" Type="nvarchar" MaxLength="50" />
         </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="principal_id" Type="int" Nullable="false" />
+          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="version" Type="int" />
+          <Property Name="definition" Type="varbinary(max)" />
+        </EntityType>
+        <Association Name="FK_Kayitlar_Kaynaklar">
+          <End Role="Kaynaklar" Type="Self.Kaynaklar" Multiplicity="0..1" />
+          <End Role="Kayitlar" Type="Self.Kayitlar" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Kaynaklar">
+              <PropertyRef Name="kaynak_id" />
+            </Principal>
+            <Dependent Role="Kayitlar">
+              <PropertyRef Name="kitap_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Kayitlar_Kullanicilar">
+          <End Role="Ogrenciler" Type="Self.Ogrenciler" Multiplicity="0..1" />
+          <End Role="Kayitlar" Type="Self.Kayitlar" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Ogrenciler">
+              <PropertyRef Name="ogrenci_id" />
+            </Principal>
+            <Dependent Role="Kayitlar">
+              <PropertyRef Name="ogrenci_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <EntityContainer Name="KutuphaneOtomasyonuModelStoreContainer">
+          <EntitySet Name="Kayitlar" EntityType="Self.Kayitlar" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Kaynaklar" EntityType="Self.Kaynaklar" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="Kullanicilar" EntityType="Self.Kullanicilar" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Ogrenciler" EntityType="Self.Ogrenciler" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Personeller" EntityType="Self.Personeller" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_Kayitlar_Kaynaklar" Association="Self.FK_Kayitlar_Kaynaklar">
+            <End Role="Kaynaklar" EntitySet="Kaynaklar" />
+            <End Role="Kayitlar" EntitySet="Kayitlar" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Kayitlar_Kullanicilar" Association="Self.FK_Kayitlar_Kullanicilar">
+            <End Role="Ogrenciler" EntitySet="Ogrenciler" />
+            <End Role="Kayitlar" EntitySet="Kayitlar" />
+          </AssociationSet>
         </EntityContainer>
       </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="KutuphaneOtomasyonuModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="KutuphaneOtomasyonuEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Kaynaklar" EntityType="KutuphaneOtomasyonuModel.Kaynaklar" />
+          <EntitySet Name="Personeller" EntityType="KutuphaneOtomasyonuModel.Personeller" />
+          <EntitySet Name="sysdiagrams" EntityType="KutuphaneOtomasyonuModel.sysdiagrams" />
+          <EntitySet Name="Ogrenciler" EntityType="KutuphaneOtomasyonuModel.Ogrenciler" />
+          <EntitySet Name="Kayitlar" EntityType="KutuphaneOtomasyonuModel.Kayitlar" />
+          <AssociationSet Name="FK_Kayitlar_Kaynaklar" Association="KutuphaneOtomasyonuModel.FK_Kayitlar_Kaynaklar">
+            <End Role="Kaynaklar" EntitySet="Kaynaklar" />
+            <End Role="Kayitlar" EntitySet="Kayitlar" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Kayitlar_Kullanicilar" Association="KutuphaneOtomasyonuModel.FK_Kayitlar_Kullanicilar">
+            <End Role="Ogrenciler" EntitySet="Ogrenciler" />
+            <End Role="Kayitlar" EntitySet="Kayitlar" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="Kaynaklar">
+          <Key>
+            <PropertyRef Name="kaynak_id" />
+          </Key>
+          <Property Name="kaynak_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="kaynak_ad" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="kaynak_yazar" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="kaynak_sayfasayisi" Type="Int32" />
+          <NavigationProperty Name="Kayitlar" Relationship="KutuphaneOtomasyonuModel.FK_Kayitlar_Kaynaklar" FromRole="Kaynaklar" ToRole="Kayitlar" />
+        </EntityType>
         <EntityType Name="Personeller">
           <Key>
             <PropertyRef Name="personel_id" />
@@ -52,56 +133,70 @@
           <Property Name="personel_kullaniciAd" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="personel_sifre" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
         </EntityType>
-        <EntityContainer Name="KutuphaneOtomasyonuEntities" annotation:LazyLoadingEnabled="true">
-          <EntitySet Name="Personeller" EntityType="Self.Personeller" />
-          <EntitySet Name="Kullanicilar" EntityType="KutuphaneOtomasyonuModel.Kullanicilar" />
-          <EntitySet Name="Kaynaklar" EntityType="KutuphaneOtomasyonuModel.Kaynaklar" />
-        </EntityContainer>
-        <EntityType Name="Kullanicilar">
+        <EntityType Name="sysdiagrams">
           <Key>
-            <PropertyRef Name="kullanici_id" />
+            <PropertyRef Name="diagram_id" />
           </Key>
-          <Property Name="kullanici_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="kullanici_ad" Type="String" MaxLength="25" FixedLength="false" Unicode="true" />
-          <Property Name="kullanici_soyad" Type="String" MaxLength="25" FixedLength="false" Unicode="true" />
-          <Property Name="kullanici_sinif" Type="Int32" />
+          <Property Name="name" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="principal_id" Type="Int32" Nullable="false" />
+          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="Int32" />
+          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
         </EntityType>
-        <EntityType Name="Kaynaklar">
+        <EntityType Name="Ogrenciler">
           <Key>
-            <PropertyRef Name="kaynak_id" />
+            <PropertyRef Name="ogrenci_id" />
           </Key>
-          <Property Name="kaynak_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="kaynak_ad" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="kaynak_yazar" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="kaynak_sayfasayisi" Type="Int32" />
+          <Property Name="ogrenci_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ogrenci_ad" Type="String" MaxLength="25" FixedLength="false" Unicode="true" />
+          <Property Name="ogrenci_soyad" Type="String" MaxLength="25" FixedLength="false" Unicode="true" />
+          <Property Name="ogrenci_tc" Type="String" MaxLength="11" FixedLength="false" Unicode="true" />
+          <Property Name="ogrenci_sinif" Type="Int32" />
+          <NavigationProperty Name="Kayitlar" Relationship="KutuphaneOtomasyonuModel.FK_Kayitlar_Kullanicilar" FromRole="Ogrenciler" ToRole="Kayitlar" />
         </EntityType>
+        <EntityType Name="Kayitlar">
+          <Key>
+            <PropertyRef Name="kayit_id" />
+          </Key>
+          <Property Name="kayit_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ogrenci_id" Type="Int32" />
+          <Property Name="kitap_id" Type="Int32" />
+          <Property Name="aliş_tarih" Type="DateTime" Precision="3" />
+          <Property Name="son_tarih" Type="DateTime" Precision="3" />
+          <Property Name="durum" Type="Boolean" />
+          <NavigationProperty Name="Kaynaklar" Relationship="KutuphaneOtomasyonuModel.FK_Kayitlar_Kaynaklar" FromRole="Kayitlar" ToRole="Kaynaklar" />
+          <NavigationProperty Name="Ogrenciler" Relationship="KutuphaneOtomasyonuModel.FK_Kayitlar_Kullanicilar" FromRole="Kayitlar" ToRole="Ogrenciler" />
+        </EntityType>
+        <Association Name="FK_Kayitlar_Kaynaklar">
+          <End Type="KutuphaneOtomasyonuModel.Kaynaklar" Role="Kaynaklar" Multiplicity="0..1" />
+          <End Type="KutuphaneOtomasyonuModel.Kayitlar" Role="Kayitlar" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Kaynaklar">
+              <PropertyRef Name="kaynak_id" />
+            </Principal>
+            <Dependent Role="Kayitlar">
+              <PropertyRef Name="kitap_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Kayitlar_Kullanicilar">
+          <End Type="KutuphaneOtomasyonuModel.Ogrenciler" Role="Ogrenciler" Multiplicity="0..1" />
+          <End Type="KutuphaneOtomasyonuModel.Kayitlar" Role="Kayitlar" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Ogrenciler">
+              <PropertyRef Name="ogrenci_id" />
+            </Principal>
+            <Dependent Role="Kayitlar">
+              <PropertyRef Name="ogrenci_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
         <EntityContainerMapping StorageEntityContainer="KutuphaneOtomasyonuModelStoreContainer" CdmEntityContainer="KutuphaneOtomasyonuEntities">
-          <EntitySetMapping Name="Personeller">
-            <EntityTypeMapping TypeName="KutuphaneOtomasyonuModel.Personeller">
-              <MappingFragment StoreEntitySet="Personeller">
-                <ScalarProperty Name="personel_id" ColumnName="personel_id" />
-                <ScalarProperty Name="personel_ad" ColumnName="personel_ad" />
-                <ScalarProperty Name="personel_soyad" ColumnName="personel_soyad" />
-                <ScalarProperty Name="personel_kullaniciAd" ColumnName="personel_kullaniciAd" />
-                <ScalarProperty Name="personel_sifre" ColumnName="personel_sifre" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Kullanicilar">
-            <EntityTypeMapping TypeName="KutuphaneOtomasyonuModel.Kullanicilar">
-              <MappingFragment StoreEntitySet="Kullanicilar">
-                <ScalarProperty Name="kullanici_sinif" ColumnName="kullanici_sinif" />
-                <ScalarProperty Name="kullanici_soyad" ColumnName="kullanici_soyad" />
-                <ScalarProperty Name="kullanici_ad" ColumnName="kullanici_ad" />
-                <ScalarProperty Name="kullanici_id" ColumnName="kullanici_id" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="Kaynaklar">
             <EntityTypeMapping TypeName="KutuphaneOtomasyonuModel.Kaynaklar">
               <MappingFragment StoreEntitySet="Kaynaklar">
@@ -109,6 +204,51 @@
                 <ScalarProperty Name="kaynak_yazar" ColumnName="kaynak_yazar" />
                 <ScalarProperty Name="kaynak_ad" ColumnName="kaynak_ad" />
                 <ScalarProperty Name="kaynak_id" ColumnName="kaynak_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Personeller">
+            <EntityTypeMapping TypeName="KutuphaneOtomasyonuModel.Personeller">
+              <MappingFragment StoreEntitySet="Personeller">
+                <ScalarProperty Name="personel_sifre" ColumnName="personel_sifre" />
+                <ScalarProperty Name="personel_kullaniciAd" ColumnName="personel_kullaniciAd" />
+                <ScalarProperty Name="personel_soyad" ColumnName="personel_soyad" />
+                <ScalarProperty Name="personel_ad" ColumnName="personel_ad" />
+                <ScalarProperty Name="personel_id" ColumnName="personel_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sysdiagrams">
+            <EntityTypeMapping TypeName="KutuphaneOtomasyonuModel.sysdiagrams">
+              <MappingFragment StoreEntitySet="sysdiagrams">
+                <ScalarProperty Name="definition" ColumnName="definition" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="name" ColumnName="name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Ogrenciler">
+            <EntityTypeMapping TypeName="KutuphaneOtomasyonuModel.Ogrenciler">
+              <MappingFragment StoreEntitySet="Ogrenciler">
+                <ScalarProperty Name="ogrenci_sinif" ColumnName="ogrenci_sinif" />
+                <ScalarProperty Name="ogrenci_tc" ColumnName="ogrenci_tc" />
+                <ScalarProperty Name="ogrenci_soyad" ColumnName="ogrenci_soyad" />
+                <ScalarProperty Name="ogrenci_ad" ColumnName="ogrenci_ad" />
+                <ScalarProperty Name="ogrenci_id" ColumnName="ogrenci_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Kayitlar">
+            <EntityTypeMapping TypeName="KutuphaneOtomasyonuModel.Kayitlar">
+              <MappingFragment StoreEntitySet="Kayitlar">
+                <ScalarProperty Name="durum" ColumnName="durum" />
+                <ScalarProperty Name="son_tarih" ColumnName="son_tarih" />
+                <ScalarProperty Name="aliş_tarih" ColumnName="aliş_tarih" />
+                <ScalarProperty Name="kitap_id" ColumnName="kitap_id" />
+                <ScalarProperty Name="ogrenci_id" ColumnName="ogrenci_id" />
+                <ScalarProperty Name="kayit_id" ColumnName="kayit_id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

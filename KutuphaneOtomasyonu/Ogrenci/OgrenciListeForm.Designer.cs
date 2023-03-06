@@ -1,6 +1,6 @@
 ﻿namespace KutuphaneOtomasyonu
 {
-    partial class KullaniciListeForm
+    partial class OgrenciListeForm
     {
         /// <summary>
         /// Required designer variable.
@@ -44,14 +44,14 @@
             this.dataGridView1.TabIndex = 0;
             this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
             // 
-            // KullaniciListeForm
+            // OgrenciListeForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
             this.Controls.Add(this.dataGridView1);
-            this.Name = "KullaniciListeForm";
-            this.Text = "KullaniciListeForm";
+            this.Name = "OgrenciListeForm";
+            this.Text = "OgrenciListeForm";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.KullaniciListeForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();

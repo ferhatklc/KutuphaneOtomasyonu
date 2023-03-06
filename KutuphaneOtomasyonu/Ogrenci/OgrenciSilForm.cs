@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace KutuphaneOtomasyonu.Kullanici
 {
-    public partial class KullaniciSilForm : Form
+    public partial class OgrenciSilForm : Form
     {
-        public KullaniciSilForm()
+        public OgrenciSilForm()
         {
             InitializeComponent();
         }
@@ -21,8 +21,19 @@ namespace KutuphaneOtomasyonu.Kullanici
         public void Listele()
         {
 
-            var kullanicilar = db.Kullanicilar.ToList();
+            var kullanicilar = db.Ogrenciler.ToList();
             dataGridView1.DataSource = kullanicilar.ToList();
+
+            //0. ve 5. kolonları  görünmez yaptık
+            dataGridView1.Columns[0].Visible = false;
+            dataGridView1.Columns[5].Visible = false;
+
+
+            dataGridView1.Columns[1].HeaderText = "Öğrenci Adı";
+            dataGridView1.Columns[2].HeaderText = "Öğrenci Soyadı";
+            dataGridView1.Columns[3].HeaderText = "Öğrenci T.C'si";
+            dataGridView1.Columns[4].HeaderText = "Öğrenci Sınıfı";
+
         }
         private void KullaniciSilForm_Load(object sender, EventArgs e)
         {
@@ -32,8 +43,8 @@ namespace KutuphaneOtomasyonu.Kullanici
         private void button1_Click(object sender, EventArgs e)
         {
             int secilenId =Convert.ToInt16 (dataGridView1.CurrentRow.Cells[0].Value);
-            var kullanici =db.Kullanicilar.Where(x=>x.kullanici_id==secilenId).FirstOrDefault();
-            db.Kullanicilar.Remove(kullanici);
+            var kullanici =db.Ogrenciler.Where(x=>x.ogrenci_id==secilenId).FirstOrDefault();
+            db.Ogrenciler.Remove(kullanici);
             db.SaveChanges();
             Listele();
         }

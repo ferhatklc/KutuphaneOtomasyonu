@@ -1,6 +1,6 @@
 ﻿namespace KutuphaneOtomasyonu.Kullanici
 {
-    partial class KullaniciGuncelleForm
+    partial class OgrenciGuncelleForm
     {
         /// <summary>
         /// Required designer variable.
@@ -36,6 +36,8 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.ogrencitctxt = new System.Windows.Forms.TextBox();
+            this.label4 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -47,7 +49,7 @@
             "10",
             "11",
             "12"});
-            this.comboBox1.Location = new System.Drawing.Point(124, 165);
+            this.comboBox1.Location = new System.Drawing.Point(124, 239);
             this.comboBox1.Name = "comboBox1";
             this.comboBox1.Size = new System.Drawing.Size(181, 24);
             this.comboBox1.TabIndex = 16;
@@ -55,7 +57,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(28, 165);
+            this.label3.Location = new System.Drawing.Point(28, 239);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(35, 16);
             this.label3.TabIndex = 15;
@@ -63,12 +65,13 @@
             // 
             // button1
             // 
+            this.button1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
             this.button1.Location = new System.Drawing.Point(124, 298);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(153, 51);
             this.button1.TabIndex = 14;
             this.button1.Text = "Güncelle";
-            this.button1.UseVisualStyleBackColor = true;
+            this.button1.UseVisualStyleBackColor = false;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // kullaniciSoyadtxt
@@ -114,11 +117,30 @@
             this.dataGridView1.TabIndex = 17;
             this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
             // 
-            // KullaniciGuncelleForm
+            // ogrencitctxt
+            // 
+            this.ogrencitctxt.Location = new System.Drawing.Point(124, 175);
+            this.ogrencitctxt.Name = "ogrencitctxt";
+            this.ogrencitctxt.Size = new System.Drawing.Size(181, 22);
+            this.ogrencitctxt.TabIndex = 19;
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(35, 178);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(28, 16);
+            this.label4.TabIndex = 18;
+            this.label4.Text = "T.C";
+            // 
+            // OgrenciGuncelleForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.Aqua;
             this.ClientSize = new System.Drawing.Size(1081, 501);
+            this.Controls.Add(this.ogrencitctxt);
+            this.Controls.Add(this.label4);
             this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.comboBox1);
             this.Controls.Add(this.label3);
@@ -127,8 +149,8 @@
             this.Controls.Add(this.kullaniciAdtxt);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
-            this.Name = "KullaniciGuncelleForm";
-            this.Text = "KullaniciGuncelleForm";
+            this.Name = "OgrenciGuncelleForm";
+            this.Text = "OgrenciGuncelleForm";
             this.Load += new System.EventHandler(this.KullaniciGuncelleForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
@@ -146,5 +168,7 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.TextBox ogrencitctxt;
+        private System.Windows.Forms.Label label4;
     }
 }

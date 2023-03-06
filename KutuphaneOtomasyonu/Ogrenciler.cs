@@ -12,18 +12,19 @@ namespace KutuphaneOtomasyonu
     using System;
     using System.Collections.Generic;
     
-    public partial class Kaynaklar
+    public partial class Ogrenciler
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Kaynaklar()
+        public Ogrenciler()
         {
             this.Kayitlar = new HashSet<Kayitlar>();
         }
     
-        public int kaynak_id { get; set; }
-        public string kaynak_ad { get; set; }
-        public string kaynak_yazar { get; set; }
-        public Nullable<int> kaynak_sayfasayisi { get; set; }
+        public int ogrenci_id { get; set; }
+        public string ogrenci_ad { get; set; }
+        public string ogrenci_soyad { get; set; }
+        public string ogrenci_tc { get; set; }
+        public Nullable<int> ogrenci_sinif { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Kayitlar> Kayitlar { get; set; }
