@@ -26,8 +26,8 @@ namespace KutuphaneOtomasyonu
             string gelenAd = adGiristxt.Text;
             string gelenSifre = sifreGiristxt.Text;
 
+            
             var personel = db.Personeller.Where(x => x.personel_ad.Equals(gelenAd) && x.personel_sifre.Equals(gelenSifre)).FirstOrDefault();
-
 
             if (personel == null)
             {
