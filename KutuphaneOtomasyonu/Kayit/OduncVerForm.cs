@@ -19,19 +19,26 @@ namespace KutuphaneOtomasyonu.Kayit
         KutuphaneOtomasyonuEntities db=new KutuphaneOtomasyonuEntities();
         private void OduncVerForm_Load(object sender, EventArgs e)
         {
-            var kayitList=db.Kayitlar.ToList();
-            dataGridView1.DataSource = kayitList.ToList();
 
+
+            var kayitList = from kayit in db.Kayitlar select new { kayit.Ogrenciler.ogrenci_ad,kayit.Kaynaklar.kaynak_ad,kayit.aliş_tarih,kayit.son_tarih,kayit.durum }; 
+            
+            
+            
+          // var kayitList=db.Kayitlar.ToList();
+            dataGridView1.DataSource = kayitList.ToList();
+          
             var kaynakList=db.Kaynaklar.ToList();  
             dataGridView2.DataSource = kaynakList.ToList();
 
-            //istenmeyen kolonları silme
+            /*istenmeyen kolonları silme
             dataGridView1.Columns[6].Visible = false;
             dataGridView1.Columns[7].Visible = false;
 
-            //kolon adları değiştirme
+            kolon adları değiştirme
             dataGridView1.Columns[1].HeaderText = "Öğrenci";
             dataGridView1.Columns[2].HeaderText = "Kaynak Ad";
+            */
         }
 
         private void button1_Click(object sender, EventArgs e)
